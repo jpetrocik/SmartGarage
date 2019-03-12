@@ -2887,6 +2887,28 @@ SparkFun BigTime Watch Kit&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 </technology>
 </technologies>
 </device>
+<device name="-SMD-5.2-TALL-REDUNDANT" package="TACTILE_SWITCH_SMD_5.2MM">
+<connects>
+<connect gate="G$1" pin="1" pad="1 2"/>
+<connect gate="G$1" pin="2" pad="3 4"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="PROD_ID" value="SWCH-14139"/>
+</technology>
+</technologies>
+</device>
+<device name="-SMD-5.2MM-TALL" package="TACTILE_SWITCH_SMD_5.2MM">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="3"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="PROD_ID" value="SWCH-14139"/>
+</technology>
+</technologies>
+</device>
 </devices>
 </deviceset>
 </devicesets>
@@ -3538,7 +3560,6 @@ https://www.digikey.com/product-detail/en/vishay-semiconductor-opto-division/LH1
 <part name="R4" library="SparkFun-Resistors" deviceset="RESISTOR" device="0805" value=" 10K"/>
 <part name="J2" library="SparkFun-Connectors" deviceset="CONN_02" device="3.5MM-NO_SILK" value="CLOSED_REED"/>
 <part name="GND4" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R5" library="SparkFun-Resistors" deviceset="RESISTOR" device="0805" value=" 10K"/>
 <part name="R6" library="SparkFun-Resistors" deviceset="RESISTOR" device="0805" value=" 100"/>
 <part name="GND5" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="J3" library="SparkFun-Connectors" deviceset="CONN_02" device="3.5MM-NO_SILK" value="IN"/>
@@ -3548,10 +3569,10 @@ https://www.digikey.com/product-detail/en/vishay-semiconductor-opto-division/LH1
 <part name="R1" library="SparkFun-Resistors" deviceset="RESISTOR" device="0805" value=" 10K"/>
 <part name="R2" library="SparkFun-Resistors" deviceset="RESISTOR" device="0805" value=" 10K"/>
 <part name="U$2" library="smartgarage" deviceset="LH1546" device=""/>
-<part name="S2" library="SparkFun-Switches" deviceset="MOMENTARY-SWITCH-SPST" device="-SMD-4.5MM"/>
-<part name="J6" library="SparkFun-Connectors" deviceset="CONN_02" device="3.5MM-NO_SILK" value="OPEN_REED"/>
+<part name="R3" library="SparkFun-Resistors" deviceset="RESISTOR" device="0805" value=" 100"/>
 <part name="GND7" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R3" library="SparkFun-Resistors" deviceset="RESISTOR" device="0805" value=" 10K"/>
+<part name="U$3" library="smartgarage" deviceset="LH1546" device=""/>
+<part name="S1" library="SparkFun-Switches" deviceset="MOMENTARY-SWITCH-SPST" device="-SMD-6.2MM-TALL"/>
 </parts>
 <sheets>
 <sheet>
@@ -3569,20 +3590,19 @@ https://www.digikey.com/product-detail/en/vishay-semiconductor-opto-division/LH1
 <instance part="R4" gate="G$1" x="-30.48" y="30.48"/>
 <instance part="J2" gate="G$1" x="53.34" y="73.66"/>
 <instance part="GND4" gate="1" x="66.04" y="68.58"/>
-<instance part="R5" gate="G$1" x="68.58" y="76.2"/>
 <instance part="R6" gate="G$1" x="71.12" y="35.56"/>
 <instance part="GND5" gate="1" x="76.2" y="30.48" rot="R270"/>
-<instance part="J3" gate="G$1" x="124.46" y="43.18" rot="R180"/>
+<instance part="J3" gate="G$1" x="124.46" y="53.34" rot="R180"/>
 <instance part="J4" gate="G$1" x="124.46" y="30.48" rot="R180"/>
 <instance part="J5" gate="G$1" x="-33.02" y="-2.54"/>
 <instance part="GND6" gate="1" x="-10.16" y="2.54" rot="R90"/>
 <instance part="R1" gate="G$1" x="25.4" y="33.02" rot="R90"/>
 <instance part="R2" gate="G$1" x="20.32" y="22.86" rot="R180"/>
 <instance part="U$2" gate="G$1" x="93.98" y="33.02"/>
-<instance part="S2" gate="G$1" x="35.56" y="25.4"/>
-<instance part="J6" gate="G$1" x="53.34" y="50.8"/>
-<instance part="GND7" gate="1" x="66.04" y="45.72"/>
-<instance part="R3" gate="G$1" x="68.58" y="53.34"/>
+<instance part="R3" gate="G$1" x="71.12" y="53.34"/>
+<instance part="GND7" gate="1" x="76.2" y="48.26" rot="R270"/>
+<instance part="U$3" gate="G$1" x="93.98" y="50.8"/>
+<instance part="S1" gate="G$1" x="35.56" y="25.4"/>
 </instances>
 <busses>
 </busses>
@@ -3635,13 +3655,12 @@ https://www.digikey.com/product-detail/en/vishay-semiconductor-opto-division/LH1
 <junction x="43.18" y="20.32"/>
 <junction x="43.18" y="25.4"/>
 <pinref part="U2" gate="G$1" pin="GPIO15"/>
-<pinref part="S2" gate="G$1" pin="2"/>
+<pinref part="S1" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="J6" gate="G$1" pin="1"/>
-<wire x1="60.96" y1="50.8" x2="66.04" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="48.26" x2="78.74" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="GND7" gate="1" pin="GND"/>
-<wire x1="66.04" y1="50.8" x2="66.04" y2="48.26" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="G$1" pin="C"/>
 </segment>
 </net>
 <net name="TX" class="0">
@@ -3651,9 +3670,9 @@ https://www.digikey.com/product-detail/en/vishay-semiconductor-opto-division/LH1
 <label x="15.24" y="35.56" size="1.016" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J5" gate="G$1" pin="2"/>
-<wire x1="-27.94" y1="-2.54" x2="-17.78" y2="-2.54" width="0.1524" layer="91"/>
-<label x="-17.78" y="-2.54" size="1.016" layer="95" xref="yes"/>
+<pinref part="J5" gate="G$1" pin="1"/>
+<wire x1="-27.94" y1="-5.08" x2="-17.78" y2="-5.08" width="0.1524" layer="91"/>
+<label x="-17.78" y="-5.08" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="RX" class="0">
@@ -3663,9 +3682,9 @@ https://www.digikey.com/product-detail/en/vishay-semiconductor-opto-division/LH1
 <label x="15.24" y="33.02" size="1.016" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J5" gate="G$1" pin="1"/>
-<wire x1="-27.94" y1="-5.08" x2="-17.78" y2="-5.08" width="0.1524" layer="91"/>
-<label x="-17.78" y="-5.08" size="1.016" layer="95" xref="yes"/>
+<pinref part="J5" gate="G$1" pin="2"/>
+<wire x1="-27.94" y1="-2.54" x2="-17.78" y2="-2.54" width="0.1524" layer="91"/>
+<label x="-17.78" y="-2.54" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -3676,7 +3695,7 @@ https://www.digikey.com/product-detail/en/vishay-semiconductor-opto-division/LH1
 <wire x1="25.4" y1="25.4" x2="30.48" y2="25.4" width="0.1524" layer="91"/>
 <wire x1="25.4" y1="27.94" x2="25.4" y2="25.4" width="0.1524" layer="91"/>
 <junction x="25.4" y="25.4"/>
-<pinref part="S2" gate="G$1" pin="1"/>
+<pinref part="S1" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -3707,11 +3726,6 @@ https://www.digikey.com/product-detail/en/vishay-semiconductor-opto-division/LH1
 <junction x="-17.78" y="76.2"/>
 </segment>
 <segment>
-<pinref part="R5" gate="G$1" pin="2"/>
-<wire x1="73.66" y1="76.2" x2="78.74" y2="76.2" width="0.1524" layer="91"/>
-<label x="78.74" y="76.2" size="1.016" layer="95" xref="yes"/>
-</segment>
-<segment>
 <pinref part="J5" gate="G$1" pin="3"/>
 <wire x1="-27.94" y1="0" x2="-17.78" y2="0" width="0.1524" layer="91"/>
 <label x="-17.78" y="0" size="1.016" layer="95" xref="yes"/>
@@ -3725,11 +3739,6 @@ https://www.digikey.com/product-detail/en/vishay-semiconductor-opto-division/LH1
 <pinref part="R2" gate="G$1" pin="1"/>
 <wire x1="25.4" y1="22.86" x2="30.48" y2="22.86" width="0.1524" layer="91"/>
 <label x="30.48" y="22.86" size="1.016" layer="95" xref="yes"/>
-</segment>
-<segment>
-<pinref part="R3" gate="G$1" pin="2"/>
-<wire x1="73.66" y1="53.34" x2="78.74" y2="53.34" width="0.1524" layer="91"/>
-<label x="78.74" y="53.34" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="VBUS" class="0">
@@ -3770,12 +3779,9 @@ https://www.digikey.com/product-detail/en/vishay-semiconductor-opto-division/LH1
 <label x="-38.1" y="22.86" size="1.016" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="R5" gate="G$1" pin="1"/>
 <pinref part="J2" gate="G$1" pin="2"/>
-<wire x1="63.5" y1="76.2" x2="61.976" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="61.976" y1="76.2" x2="60.96" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="61.976" y1="80.264" x2="61.976" y2="76.2" width="0.1524" layer="91"/>
-<junction x="61.976" y="76.2"/>
 <label x="61.976" y="80.264" size="1.016" layer="95" rot="R90" xref="yes"/>
 </segment>
 </net>
@@ -3785,24 +3791,11 @@ https://www.digikey.com/product-detail/en/vishay-semiconductor-opto-division/LH1
 <wire x1="116.84" y1="30.48" x2="114.3" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="30.48" x2="114.3" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="35.56" x2="114.3" y2="35.56" width="0.1524" layer="91"/>
-<pinref part="J3" gate="G$1" pin="2"/>
-<wire x1="116.84" y1="40.64" x2="114.3" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="114.3" y1="40.64" x2="114.3" y2="35.56" width="0.1524" layer="91"/>
-<junction x="114.3" y="35.56"/>
 <pinref part="U$2" gate="G$1" pin="S1"/>
-</segment>
-</net>
-<net name="N$3" class="0">
-<segment>
-<pinref part="J3" gate="G$1" pin="1"/>
-<wire x1="116.84" y1="43.18" x2="111.76" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="30.48" x2="111.76" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="J4" gate="G$1" pin="2"/>
-<wire x1="111.76" y1="30.48" x2="111.76" y2="27.94" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="27.94" x2="116.84" y2="27.94" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="43.18" x2="111.76" y2="30.48" width="0.1524" layer="91"/>
-<junction x="111.76" y="30.48"/>
-<pinref part="U$2" gate="G$1" pin="S2"/>
+<wire x1="114.3" y1="35.56" x2="114.3" y2="50.8" width="0.1524" layer="91"/>
+<pinref part="J3" gate="G$1" pin="2"/>
+<wire x1="114.3" y1="50.8" x2="116.84" y2="50.8" width="0.1524" layer="91"/>
+<junction x="114.3" y="35.56"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -3814,23 +3807,52 @@ https://www.digikey.com/product-detail/en/vishay-semiconductor-opto-division/LH1
 </net>
 <net name="GPIO13" class="0">
 <segment>
-<pinref part="J6" gate="G$1" pin="2"/>
-<pinref part="R3" gate="G$1" pin="1"/>
-<wire x1="60.96" y1="53.34" x2="61.976" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="61.976" y1="53.34" x2="63.5" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="61.976" y1="57.912" x2="61.976" y2="53.34" width="0.1524" layer="91"/>
-<junction x="61.976" y="53.34"/>
-<label x="61.976" y="57.912" size="1.016" layer="95" rot="R90" xref="yes"/>
-</segment>
-<segment>
 <pinref part="U2" gate="G$1" pin="GPIO13"/>
 <wire x1="-22.86" y1="20.32" x2="-38.1" y2="20.32" width="0.1524" layer="91"/>
 <label x="-38.1" y="20.32" size="1.016" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="R3" gate="G$1" pin="1"/>
+<wire x1="66.04" y1="53.34" x2="58.42" y2="53.34" width="0.1524" layer="91"/>
+<label x="58.42" y="53.34" size="1.016" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="N$7" class="0">
+<segment>
+<pinref part="R3" gate="G$1" pin="2"/>
+<wire x1="83.82" y1="53.34" x2="76.2" y2="53.34" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="G$1" pin="A"/>
+</segment>
+</net>
+<net name="N$8" class="0">
+<segment>
+<wire x1="104.14" y1="53.34" x2="116.84" y2="53.34" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="G$1" pin="S1"/>
+<pinref part="J3" gate="G$1" pin="1"/>
+</segment>
+</net>
+<net name="N$9" class="0">
+<segment>
+<wire x1="104.14" y1="48.26" x2="111.76" y2="48.26" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="G$1" pin="S2"/>
+<wire x1="104.14" y1="30.48" x2="111.76" y2="30.48" width="0.1524" layer="91"/>
+<pinref part="J4" gate="G$1" pin="2"/>
+<wire x1="111.76" y1="30.48" x2="111.76" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="27.94" x2="116.84" y2="27.94" width="0.1524" layer="91"/>
+<pinref part="U$2" gate="G$1" pin="S2"/>
+<wire x1="111.76" y1="48.26" x2="111.76" y2="30.48" width="0.1524" layer="91"/>
+<junction x="111.76" y="30.48"/>
 </segment>
 </net>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="104,1,104.14,35.56,U$2,S1,N$6,,,"/>
+<approved hash="104,1,104.14,30.48,U$2,S2,N$9,,,"/>
+<approved hash="104,1,104.14,53.34,U$3,S1,N$8,,,"/>
+<approved hash="104,1,104.14,48.26,U$3,S2,N$9,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
