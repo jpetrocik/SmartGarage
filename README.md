@@ -1,14 +1,15 @@
 # SmartGarage
 
-I often could not remember if I had closed the garage door so I would have to circle back around to check. I decided to look for a device that would allow me to check whether the door is currently open and to remotely control it.  The device also needed to work with my existing home automation system and not require the manufacturer's servers to operate.  I wanted to be able to control the device directly from my existing home automation system, like OpenHab2 and home-assistant.io.
+SmartGarage is a WIFI enabled device that works with most garage doors to open and close the garage door using a mobile phone or as part of a home automation system.  SmartGarage has a HTTP REST api and supports MQTT to work with existing home automation system, like OpenHab2 and home-assistant.io.  No 3rd party servers are required for SmartGarage to work, you can directly operate it via a HTTP RestAPI or directly intergrate it with any home automation system, like OpenHab2 and home-assistant.io.
 
-After searching off and on for sometime I finally concluded there was nothing that matched my needs.  Recently, I had starting playing around with the ESP8266 Wifi modules and thought that would be a perfect module to build a garage door device around.
+The device is based around the ESP8266 Wifi modules and can be easy modifed to fit any custom needs. The are hundreds of tutorials about programming and flashing the ESP8266 module using ArRduinoIDE. The PCB design and firmware is opensource and can be easily customized.
+
 
 ## Device ##
 
-The device is about 20mm x 40mm and is powered by mini usb cable.  Installation is striaght forward, and does not interfee with any the current operations of the garage door.  All remotes still work along with the manual opener inside your garage.
+The physical PCB is about 20mm x 40mm and is powered by mini usb cable.  Installation is striaght forward, and does not interfer with any the current operations of the garage door.  All remotes still work along with the manual opener inside your garage.
 
-There are a couple options to get your hands on your own board.  You can order it directly from me on ebay.com ready to install, with the lastest firmware already flashed.  Or I've included all the necessary schematic file and firmware on github.com. 
+There are a couple options to get your hands on your own board.  You can order it directly from me on ebay.com with the lastest firmware already flashed and ready to install.  Or you can download the Eagle files from https://github.com/jpetrocik/SmartGarage and build your own.
 
 ## Controlling The Garage Door ##
 
