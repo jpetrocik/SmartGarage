@@ -1,6 +1,6 @@
 # SmartGarage
 
-SmartGarage is a WIFI enabled device that works with most garage doors to open and close the garage door using a mobile phone or as part of a home automation system.  SmartGarage has a HTTP REST api and supports MQTT to work with existing home automation system, like OpenHab2 and home-assistant.io.  No 3rd party servers are required for SmartGarage to work, you can directly operate it via a HTTP RestAPI or directly intergrate it with any home automation system, like OpenHab2 and home-assistant.io.
+SmartGarage is a WIFI enabled device that works with most garage doors to check whether the door is open or close and to operate the garage door using a mobile phone or as part of a home automation system.  SmartGarage has a HTTP REST api and supports MQTT to work with existing home automation system, like OpenHab2 and home-assistant.io.  No 3rd party servers are required for SmartGarage to work, you can directly operate it via a HTTP RestAPI or directly intergrate it with any home automation system, like OpenHab2 and home-assistant.io.
 
 The device is based around the ESP8266 Wifi modules and can be easy modifed to fit any custom needs. The are hundreds of tutorials about programming and flashing the ESP8266 module using ArRduinoIDE. The PCB design and firmware is opensource and can be easily customized.
 
