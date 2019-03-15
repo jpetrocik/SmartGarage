@@ -10,6 +10,8 @@ The physical PCB is about 20mm x 40mm and is powered by a mini usb cable.  Insta
 
 There are a couple options to get your hands on your own board.  You can order it directly from me on ebay.com with the latest firmware already flashed and ready to install.  Or you can download the Eagle files from https://github.com/jpetrocik/SmartGarage and build your own.
 
+![Image Of Device](http://petrocik.net/~john/SmartGarage.jpg)
+
 ## Controlling The Garage Door ##
 
 The device has a both a REST api and works with MQTT.
@@ -75,5 +77,7 @@ Here is an example of the message published with the door is closed.
 }
 ```
 
+## Installation Guide ##
 
+https://docs.google.com/document/d/12LUHNYjrVlYSZdDVwD1QsqcnY-EzrYETPhFzhXXMPhE/edit?usp=sharing
 
