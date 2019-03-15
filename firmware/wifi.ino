@@ -7,18 +7,21 @@ void wifiSetup() {
   Serial.println("Setting up wifi connection....");
   WiFiManager wifiManager;
 
+  char apSid[20];
+  sprintf (apSid, "garage_%08X", ESP.getChipId());
+  
   wifiManager.setConfigPortalTimeout(300);
   wifiManager.setDebugOutput(false);
   wifiManager.setAPCallback(wifiConfigModeCallback);
   wifiManager.setSaveConfigCallback(saveConfigCallback);
-  if (!wifiManager.autoConnect(hostname)) { 
+  if (!wifiManager.autoConnect(apSid)) { 
     Serial.println("Failed to connect, trying again...");
     ESP.restart();
   }
 
-//  if (shouldSaveConfig) {
-//    configSave();
-//  }
+  if (shouldSaveConfig) {
+    configSave();
+  }
 
 }
 

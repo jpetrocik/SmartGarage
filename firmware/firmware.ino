@@ -25,13 +25,14 @@ char jsonStatusMsg[140];
 
 //configuration properties
 char mqttServer[150] = MQTT_SERVER;
-char mqttUsername[150] = MQTT_USER;
-char mqttPassword[150] = MQTT_PASSWORD;
 int mqttServerPort = MQTT_PORT;
+boolean mqttSsl = false;
+char mqttUsername[150];
+char mqttPassword[150];
 
 char hostname[20];
-char commandTopic[70];
-char statusTopic[70];
+char commandTopic[150];
+char statusTopic[150];
 
 void setup() {
   Serial.begin(115200);
@@ -43,8 +44,9 @@ void setup() {
   doorSwitch.attach(DOOR_PIN, INPUT); 
   doorSwitch.interval(500);
 
-  sprintf (hostname, "garage_%08X", ESP.getChipId());
-
+//  sprintf (hostname, "garage_%08X", ESP.getChipId());
+  sprintf (hostname, "garage");
+  
   //slow ticker when starting up
   //switch to fast tick when in AP mode
   ticker.attach(0.6, tick);
@@ -67,7 +69,6 @@ void setup() {
 
   Serial.println("SmartGarage Firmware");
   Serial.println(__DATE__ " " __TIME__);
-  Serial.println(hostname);
 
 }
 
@@ -129,11 +130,20 @@ void tick() {
 void configSave() {
   DynamicJsonDocument jsonDoc(1024);
   JsonObject json = jsonDoc.to<JsonObject>();
+
+  //standard properties, allways shown when view config
   json["hostname"] = hostname;
   json["mqttServer"] = mqttServer;
+  json["mqttServerPort"] = mqttServerPort;
+  json["mqttSsl"] = mqttSsl;
   json["mqttUsername"] = mqttUsername;
   json["mqttPassword"] = mqttPassword;
-  json["mqttServerPort"] = mqttServerPort;
+
+  //advanced properties, only show in config if set
+  if (strlen(commandTopic))
+    json["commandTopic"] = commandTopic;
+  if (strlen(statusTopic))
+    json["statusTopic"] = statusTopic;
 
   File configFile = SPIFFS.open("/config.json", "w");
   if (configFile) {
@@ -158,7 +168,7 @@ void configLoad() {
 
         configFile.readBytes(buf.get(), size);
 
-        DynamicJsonDocument jsonDoc(1024);
+        DynamicJsonDocument jsonDoc(size);
         DeserializationError error = deserializeJson(jsonDoc, buf.get());
         serializeJsonPretty(jsonDoc, Serial);
 
@@ -182,6 +192,19 @@ void configLoad() {
         if (json.containsKey("mqttServerPort")) {
           mqttServerPort = json["mqttServerPort"];
         }
+
+        if (json.containsKey("mqttSsl")) {
+          mqttSsl = json["mqttSsl"];
+        }
+
+        if (json.containsKey("commandTopic")) {
+          strncpy(commandTopic, json["commandTopic"], 150);
+        }
+
+        if (json.containsKey("statusTopic")) {
+          strncpy(statusTopic, json["statusTopic"], 150);
+        }
+
       }
     }
   }
