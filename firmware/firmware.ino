@@ -41,10 +41,9 @@ void setup() {
   pinMode(RELAY, OUTPUT);
 
   //setup pin read with bounce protection and door bouncing when it opens
-  doorSwitch.attach(DOOR_PIN, INPUT); 
+  doorSwitch.attach(DOOR_STATUS, INPUT_PULLUP); 
   doorSwitch.interval(500);
 
-//  sprintf (hostname, "garage_%08X", ESP.getChipId());
   sprintf (hostname, "garage");
   
   //slow ticker when starting up
@@ -85,15 +84,28 @@ void loop() {
   sendDoorStatusOnChange();
 }
 
+void openDoor() {
+  if (!doorSwitch.read()) {
+    toogleDoor();
+  }
+}
+
+void closeDoor() {
+  if (doorSwitch.read()) {
+    toogleDoor();
+  }
+}
+
 void toogleDoor() {
+  ticker.attach(0.2, tick);
   digitalWrite(RELAY, HIGH);
   delay(500);
   digitalWrite(RELAY, LOW);
 }
 
-void sendCurrentDoorStatus() {
+void sendCurrentDoorStatus(boolean changed) {
   int doorState = !doorSwitch.read();
-  sprintf (jsonStatusMsg, "{\"status\":%s}", doorState ? "\"OFF\"" : "\"ON\"");
+  sprintf (jsonStatusMsg, "{\"status\":%s, \"changed\":%s}", doorState ? "\"CLOSED\"" : "\"OPEN\"", changed ? "true" : "false");
 
   mqttSendMsg(jsonStatusMsg);
 }
@@ -101,9 +113,10 @@ void sendCurrentDoorStatus() {
 void sendDoorStatusOnChange() {
   boolean changed = doorSwitch.update();
 
-  //if the button state has changed, record when and current state
+  //if the button state has changed, current state is recorded
   if (changed) {
-    sendCurrentDoorStatus();
+    ticker.detach();
+    sendCurrentDoorStatus(changed);
     int doorState = !doorSwitch.read();
     digitalWrite(ONBOARD_LED, doorState);
   }

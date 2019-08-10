@@ -380,10 +380,10 @@ UsedLibrary="smartgarage.lbr"
 
 [Win_1]
 Type="Control Panel"
-Loc="396 276 1321 675"
+Loc="333 183 1489 739"
 State=2
 Number=0
 
 [Desktop]
-Screen="1440 900"
+Screen="1680 1050"
 Window="Win_1"

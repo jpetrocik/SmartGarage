@@ -12,12 +12,14 @@ void mqttCallback(char* topic, byte* payload, unsigned int length) {
   Serial.print("Message received on ");
   Serial.println (topic);
   if (strcmp(topic, _commandTopic) == 0) {
-    if ((char)payload[0] == '1') {
-      toogleDoor();
-    } else if ((char)payload[0] == '0') {
+    if ((char)payload[0] == '0') {
+      closeDoor();
+    } else if ((char)payload[0] == '1') {
+      openDoor();
+    } else if ((char)payload[0] == '2') {
       toogleDoor();
     } else if ((char)payload[0] == '3') {
-      sendCurrentDoorStatus();
+      sendCurrentDoorStatus(false);
     }
   }
 }
@@ -31,7 +33,7 @@ void mqttSetup() {
   } else {
     _mqClient.setClient(_wifiClient);
   }
-  
+    
   _mqClient.setServer(mqttServer, mqttServerPort);
   _mqClient.setCallback(mqttCallback);
 
