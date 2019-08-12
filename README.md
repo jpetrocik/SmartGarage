@@ -1,22 +1,10 @@
 # SmartGarage
 
-SmartGarage is a WIFI enabled device that works with most garage door openers. It provides the current status of the door and allows you to open and close the door using a mobile phone or as part of an existing home automation system, like OpenHab2 and home-assistant.io.  No 3rd party servers are required for SmartGarage to work, you can directly operate it via a HTTP RestAPI or MQTT.  
-
-The PCB design and firmware is opensource and can be easily modified to fit any custom requirements. The device is based around the very popular ESP8266 Wifi module.  There are hundreds of tutorials showing how to programm and flash the ESP8266 module using ArduinoIDE. 
-
-## Device ##
-
-The physical PCB is about 20mm x 40mm and is powered by a mini usb cable.  Installation is straight forward and does not interfere the current operation of the garage door, all remotes and openers still work.
-
-There are a couple options to get your hands on your own board.  You can order it directly from me on ebay.com with the latest firmware already flashed and ready to install.  Or you can download the Eagle files from https://github.com/jpetrocik/SmartGarage and build your own.
-
-![Image Of Device](http://petrocik.net/~john/SmartGarage.jpg)
+SmartGarage is a WIFI enabled device that works with most garage door openers. Along with opening and closing the garage door, it provides the current status of the door, whether its open or closed.  The stock firmware provides both a HTTP Restful api and MQTT based interface. No 3rd party servers are required for SmartGarage to work, you can directly operate it via a HTTP RestAPI or MQTT.  It easly intergrates with HomeAssistant, https://www.home-assistant.io/ and other home automation software.
 
 ## Controlling The Garage Door ##
 
-The device has a both a REST api and works with MQTT.
-
-REST Api
+RESTful Api
 
 ```
 GET  http://garage.local/
@@ -51,16 +39,16 @@ garage/[hostname]/command
 The messages published to the command topic are very simple,  just numeric numbers.  When the garage door opener button is pressed the garage door either opens or closes depending on the door's current state.  There is no direct open command or close command, if the door is closed, it will open and if its open it will close.  To better support home automation system the common commands like 0 for OFF, 1 for ON, and 2 for TOGGLE all trigger the garage door.
 
 ```
-0 Operate the door 
-1 Operate the door 
-2 Operate the door 
+0 Close the door 
+1 Open the door 
+2 Toggle the door, open or close depending on current state
 3 Request current status
 ```
 
-If you are using mosquito the command line to operate the garage door would like like this:
+If you are using mosquito the command line to open the garage door would look like this:
 
 ```
-mosquito_pub -t garage/garage/command -m 0
+mosquito_pub -t garage/garage/command -m 1
 ```
 
 When the door opens or closes, the status is published on the status topic.  The message is a json message indicating the current status.  Again, if using mosquito the command line to listen for the status change would be
@@ -80,4 +68,12 @@ Here is an example of the message published with the door is closed.
 ## Installation Guide ##
 
 https://docs.google.com/document/d/12LUHNYjrVlYSZdDVwD1QsqcnY-EzrYETPhFzhXXMPhE/edit?usp=sharing
+
+## Device ##
+
+The physical PCB is about 20mm x 40mm and is powered by a mini usb cable.  Installation is straight forward and does not interfere the current operation of the garage door, all remotes and openers still work.
+
+There are a couple options to get your hands on your own board.  You can order it directly from me on ebay.com with the latest firmware already flashed and ready to install, or you can download the Eagle files from https://github.com/jpetrocik/SmartGarage and build your own.
+
+![Image Of Device](http://petrocik.net/~john/SmartGarage.jpg)
 
