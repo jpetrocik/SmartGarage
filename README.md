@@ -36,8 +36,7 @@ The device listens on the command topic and publishes the status of the door on 
 garage/[hostname]/command
 ```
 
-The messages published to the command topic are very simple,  just numeric numbers.  When the garage door opener button is pressed the garage door either opens or closes depending on the door's current state.  There is no direct open command or close command, if the door is closed, it will open and if its open it will close.  To better support home automation system the common commands like 0 for OFF, 1 for ON, and 2 for TOGGLE all trigger the garage door.
-
+The messages published to the command topic are very simple,  just numeric numbers.  You can request the door to close, open, or toggle depending on its current state.
 ```
 0 Close the door 
 1 Open the door 
@@ -75,5 +74,5 @@ The physical PCB is about 20mm x 40mm and is powered by a mini usb cable.  Insta
 
 There are a couple options to get your hands on your own board.  You can order it directly from me on ebay.com with the latest firmware already flashed and ready to install, or you can download the Eagle files from https://github.com/jpetrocik/SmartGarage and build your own.
 
-![Image Of Device](http://petrocik.net/~john/SmartGarage.jpg)
+![Image Of Device v1.1](http://petrocik.net/~john/SmartGarage.jpg)
 
