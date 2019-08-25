@@ -10,6 +10,7 @@ void webServerSetup() {
    server.on("/factoryreset", HTTP_POST, handleFactoryReset); 
    server.on("/config", HTTP_GET, handleConfigureDevice); 
    server.on("/config", HTTP_PUT, handleSaveConfigureDevice); 
+   server.on("/config", HTTP_OPTIONS, handleConfigureOptions); 
 
    server.begin();
 }
@@ -43,6 +44,12 @@ void handleVersion() {
   server.send(200, "application/json",  "{\"version\":\"" __DATE__ " " __TIME__ "\"}");
 }
 
+void handleConfigureOptions() {
+  server.sendHeader("Access-Control-Allow-Origin", "*", false);
+  server.sendHeader("Access-Control-Allow-Methods", "GET,PUT,OPTIONS", false);
+  server.send(200, "text/html", "");
+}
+
 void handleConfigureDevice() {
   Serial.println("Loading config data....");
   if (SPIFFS.exists("/config.json")) {
@@ -60,11 +67,13 @@ void handleConfigureDevice() {
       if (!error) {
         String result;
         serializeJsonPretty(json, result);
+        server.sendHeader("Access-Control-Allow-Origin", "*", false);
         server.send(200, "application/json",  result);
         return;
       }
     }
   }
+  server.sendHeader("Access-Control-Allow-Origin", "*", false);
   server.send(200, "application/json",  "{}");
 
 }
